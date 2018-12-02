@@ -2,14 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-	return HttpResponse("this is index page")
+	return render(request, 'results/index.html', {})
 
 def about(request):
-	return HttpResponse("this is about page")
+	return render(request, 'results/about.html', {})
 
 def how_to(request):
-	return HttpResponse("this is expalin of how to?")
+	return render(request, 'results/how_to.html', {})
 
 def results(request):
-	return HttpResponse("this is where we will show the results")
+	return render(request, 'results/results.html', {})
 
