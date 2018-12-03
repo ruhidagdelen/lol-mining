@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import PlayerForm
+from .api.api import *
 
 def index(request):
     if request.method == "POST":
@@ -8,8 +9,8 @@ def index(request):
         if form.is_valid():
             player = form.save(commit=False)
             player.save()
-            result = calculate(player)
-            return render(request, 'results/results.html',{'result':result})
+            result = main(player.username,player.main_role,player.secondary_role)
+            return render(request, 'results/results.html',{'result':result['live'],'all_data':result['collected']})
     else:
         form = PlayerForm()
     return render(request, 'results/index.html', {'form':form})
@@ -19,7 +20,4 @@ def about(request):
 
 def how_to(request):
     return render(request, 'results/how_to.html', {})
-
-def calculate(player):
-    return player.username
 
