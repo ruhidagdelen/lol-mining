@@ -11,10 +11,10 @@ import time
 import pandas as pd
 from requests import exceptions
 
-riotAPI = "RGAPI-c9a997c4-9347-4b4c-b9fd-c2c82ac842e6"
+riotAPI = "RGAPI-56e0891d-4bf0-498e-ace5-6b653a9b0d6f"
 seasonID = "11"
-endIndex = "5"
-winnerEndIndex = "5"
+endIndex = "6"
+winnerEndIndex = "6"
 ROLEFLAG = 0
 REQUEST_FLAG = 0
 

@@ -7,9 +7,16 @@
 	<p>this is index this will be rocks later</p>
 	<form method="post">
 		{%csrf_token%}
-		{{form.as_p}}
+		<p>
+			<label for="id_username">Username:</label> 
+			<input type="text" name="username" maxlength="50" required="" id="id_username"></p>
+		<p>
+			<label for="id_main_role">Main role:</label> 
+			<input type="text" name="main_role" maxlength="15" required="" id="id_main_role"></p>
+		<p>
+			<label for="id_secondary_role">Secondary role:</label> 
+			<input type="text" name="secondary_role" maxlength="15" required="" id="id_secondary_role"></p>
 		<input type="submit" value="Submit">
 	</form>
-	
 </body>
 </html>

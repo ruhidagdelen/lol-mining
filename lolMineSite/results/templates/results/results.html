@@ -5,8 +5,17 @@
 </head>
 <body>
 	<p>there will be dozens of result</p>
-	{{result}}
-	{{all_data}}
+	<ul>
+		<h2>Live Results</h2>
+		{{result}}
+	</ul>
+	<ul>
+		<h2>Live Results</h2>
+		{% for i in range2 %}
+			<li>{{i}}</li>
+		{% endfor %}
+	</ul>
+	
 	<a href="{% url 'results:index' %}">Do it again</a>
 </body>
 </html>

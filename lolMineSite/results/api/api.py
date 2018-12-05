@@ -11,10 +11,10 @@ import time
 import pandas as pd
 from requests import exceptions
 
-riotAPI = "RGAPI-3f6e0b5d-2b44-4944-931a-6074c2debe73"
+riotAPI = "RGAPI-56e0891d-4bf0-498e-ace5-6b653a9b0d6f"
 seasonID = "11"
-endIndex = "5"
-winnerEndIndex = "5"
+endIndex = "2"
+winnerEndIndex = "2"
 ROLEFLAG = 0
 REQUEST_FLAG = 0
 
@@ -206,7 +206,7 @@ def main(summonerName,role,roleSec):
     accountResponse = requestSummonerData(summonerName)
     print(accountResponse)
     print("YOUR ACCOUNT ID: >"+str(accountResponse['accountId']))
-    # print(accountResponse['accountId'])
+    
     accountID = (str)(accountResponse['accountId'])
 
     # =============================================================================

@@ -10,7 +10,10 @@ def index(request):
             player = form.save(commit=False)
             player.save()
             result = main(player.username,player.main_role,player.secondary_role)
-            return render(request, 'results/results.html',{'result':result['live'],'all_data':result['collected']})
+            return render(request, 'results/results.html',{'result':result['live'],
+            	'all_data':result['collected'],
+            	'range':range(len(result['live'])),
+            	'range2':range(len(result['collected']))})
     else:
         form = PlayerForm()
     return render(request, 'results/index.html', {'form':form})
