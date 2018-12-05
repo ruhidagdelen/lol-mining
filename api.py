@@ -13,8 +13,8 @@ from requests import exceptions
 
 riotAPI = "RGAPI-56e0891d-4bf0-498e-ace5-6b653a9b0d6f"
 seasonID = "11"
-endIndex = "6"
-winnerEndIndex = "6"
+endIndex = "10" #should be endIndex => winnerEndIndex 
+winnerEndIndex = "10"
 ROLEFLAG = 0
 REQUEST_FLAG = 0
 

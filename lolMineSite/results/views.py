@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import pandas as pd
 from .forms import PlayerForm
 from .api.api import *
 
@@ -10,10 +11,15 @@ def index(request):
             player = form.save(commit=False)
             player.save()
             result = main(player.username,player.main_role,player.secondary_role)
-            return render(request, 'results/results.html',{'result':result['live'],
-            	'all_data':result['collected'],
-            	'range':range(len(result['live'])),
-            	'range2':range(len(result['collected']))})
+            last = result['live']
+            last = map(list, last.values)
+            all_data = result['collected']
+            all_data = map(list, all_data.values)
+            # all_data = all_data.values.to_list()
+            return render(request, 'results/results.html',{
+            	'result':last,
+            	'all_data':all_data,
+            	})
     else:
         form = PlayerForm()
     return render(request, 'results/index.html', {'form':form})

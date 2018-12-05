@@ -7,12 +7,14 @@
 	<p>there will be dozens of result</p>
 	<ul>
 		<h2>Live Results</h2>
-		{{result}}
+		{% for line in result %}
+		<li>{{line}}</li>
+		{% endfor %}
 	</ul>
 	<ul>
-		<h2>Live Results</h2>
-		{% for i in range2 %}
-			<li>{{i}}</li>
+		<h2>collected Results</h2>
+		{% for lone in all_data %}
+		<li>{{lone}}</li>
 		{% endfor %}
 	</ul>
 	
