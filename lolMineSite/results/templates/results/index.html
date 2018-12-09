@@ -8,14 +8,32 @@
 	<form method="post">
 		{%csrf_token%}
 		<p>
-			<label for="id_username">Username:</label> 
-			<input type="text" name="username" maxlength="50" required="" id="id_username"></p>
+			<label for="id_username">Username:</label>
+			 <input type="text" name="username" maxlength="50" required="" id="id_username"></p>
 		<p>
-			<label for="id_main_role">Main role:</label> 
-			<input type="text" name="main_role" maxlength="15" required="" id="id_main_role"></p>
+			<label for="id_main_role">Main role:</label>
+			 <input type="text" name="main_role" maxlength="15" required="" id="id_main_role"></p>
 		<p>
-			<label for="id_secondary_role">Secondary role:</label> 
-			<input type="text" name="secondary_role" maxlength="15" required="" id="id_secondary_role"></p>
+			<label for="id_secondary_role">Secondary role:</label>
+			 <input type="text" name="secondary_role" maxlength="15" required="" id="id_secondary_role"></p>
+		<p>
+			<label for="id_aggressionOverFarming">AggressionOverFarming:</label>
+			 <input type="number" name="aggressionOverFarming" step="any" required="" id="id_aggressionOverFarming"></p>
+		<p>
+			<label for="id_agressionOverSurvival">AgressionOverSurvival:</label>
+			 <input type="number" name="agressionOverSurvival" step="any" required="" id="id_agressionOverSurvival"></p>
+		<p>
+			<label for="id_agressionOverVision">AgressionOverVision:</label>
+			 <input type="number" name="agressionOverVision" step="any" required="" id="id_agressionOverVision"></p>
+		<p>
+			<label for="id_farmingOverSurvival">FarmingOverSurvival:</label>
+			 <input type="number" name="farmingOverSurvival" step="any" required="" id="id_farmingOverSurvival"></p>
+		<p>
+			<label for="id_farmingOverVision">FarmingOverVision:</label>
+			 <input type="number" name="farmingOverVision" step="any" required="" id="id_farmingOverVision"></p>
+		<p>
+			<label for="id_survivalOverVision">SurvivalOverVision:</label>
+			 <input type="number" name="survivalOverVision" step="any" required="" id="id_survivalOverVision"></p>
 		<input type="submit" value="Submit">
 	</form>
 </body>

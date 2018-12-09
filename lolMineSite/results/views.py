@@ -11,6 +11,12 @@ def index(request):
             player = form.save(commit=False)
             player.save()
             result = main(player.username,player.main_role,player.secondary_role)
+            resAhp = prepAhp(player.aggOverFar,
+            	player.aggOverSur,
+            	player.aggOverVis,
+            	player.farOverSur,
+            	player.farOverVis,
+            	player.surOverVis)
             last = result['live']
             last = map(list, last.values)
             all_data = result['collected']
@@ -30,3 +36,5 @@ def about(request):
 def how_to(request):
     return render(request, 'results/how_to.html', {})
 
+def prepAhp(aggOverFar,aggOverSur,aggOverVis,farOverSur,farOverVis,surOverVis):
+	return 0

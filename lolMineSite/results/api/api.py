@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from requests import exceptions
 
-riotAPI = "RGAPI-56e0891d-4bf0-498e-ace5-6b653a9b0d6f"
+riotAPI = "RGAPI-be88f049-c68c-4275-b31f-166422d8097e"
 seasonID = "11"
 endIndex = "5"
 winnerEndIndex = "5"
