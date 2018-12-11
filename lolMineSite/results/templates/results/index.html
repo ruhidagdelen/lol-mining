@@ -2,15 +2,230 @@
 <html lang="en">
 <head>
 	{% include 'results/includes/header.html' %}
+    <style>
+        input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+        /* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background: white;
+  cursor: pointer;
+  margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  border: 1px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+    margin-top: -7px;
+  background: white;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+
+  border: 1px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+    margin-top: -7px;
+  background: white;
+  cursor: pointer;
+}
+
+        input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #FFC65D;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #FFC65D;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #FFC65D;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #FFC65D;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #FFC65D;
+}
+input[type=range]::-ms-fill-upper {
+  background: #FFC65D;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #FFC65D;
+}
+
+        .range {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    height: 50px;
+}
+.lblrange
+{
+    font-size: 200%;
+    text-align: center;
+    color:white;
+    margin: 0 30px;
+    font-family: Montserrat;
+    font-weight: 400;
+}
+
+
+        input[type=text] {
+            background:transparent;
+                        font-family: Rockwell;
+            font-weight: 400;
+            font-size:36px;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+              border: none;
+  border-bottom: 2px solid #FFC65D;
+            color: white;
+}
+        input[type=text]:focus {
+            font-family: Rockwell;
+            font-weight: 400;
+            font-size:36px;
+            outline: none;
+            background:transparent;
+  border-bottom: 2px solid white;
+            color: #FFC65D;
+}
+
+
+        .button {
+  display: inline-block;
+  padding: 15px 200px;
+            margin: 0 auto;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+    font-family: Montserrat;
+    font-weight: 400;
+  color: #FFC65D;
+  background-color: transparent;
+  border: #FFC65D 2px solid;
+}
+
+.button:hover {  border: white 2px solid;
+    color: white;}
+
+.button:active {
+  background-color: #FFC65D;
+    color: white;
+  transform: translateY(4px);
+}
+    </style>
 </head>
 <body>
-	<p>this is index this will be rocks later</p>
 	<form method="post">
 		{%csrf_token%}
-		<p>
-			<label for="id_username">Username:</label>
+		<p style="width: 30%; margin: 0 auto; text-align: center; padding-top: 90px;" >
+			<label class="lblrange" for="id_username">USERNAME</label>
 			 <input type="text" name="username" maxlength="50" required="" id="id_username"></p>
-		<p>
+		 <p>
+<div class="container">
+
+	<h2>CHOOSE PRIMARY ROLE</h2>
+
+
+    <input type="radio" id="f-option" name="selector">
+    <label for="f-option">Pizza</label>
+
+    <input type="radio" id="s-option" name="selector">
+    <label for="s-option">Bacon</label>
+
+    <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+        <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+        <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+
+</div></p>
+        <div class="container">
+
+	<h2>CHOOSE SECONDARY ROLE</h2>
+
+
+    <input type="radio" id="f-option" name="selector">
+    <label for="f-option">Pizza</label>
+
+    <input type="radio" id="s-option" name="selector">
+    <label for="s-option">Bacon</label>
+
+    <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+            <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+            <input type="radio" id="t-option" name="selector">
+    <label for="t-option">Cats</label>
+
+</div></p>
+
+       <!-- <p>
 			<label for="id_main_role">Main role:</label>
 			 <input type="text" name="main_role" maxlength="15" required="" id="id_main_role"></p>
 		<p>
@@ -34,7 +249,15 @@
 		<p>
 			<label for="id_survivalOverVision">SurvivalOverVision:</label>
 			 <input type="number" name="survivalOverVision" step="any" required="" id="id_survivalOverVision"></p>
-		<input type="submit" value="Submit">
+
+-->
+        <div class='range' style="width:800px;">
+              <label class="lblrange">AGGRESSION</label><input type="range" id="start" name="volume"
+         min="1" max="7">
+        <label class="lblrange">FARMING</label>
+        </div>
+
+        <input class='button' type="submit" value="Submit">
 	</form>
 </body>
 </html>
