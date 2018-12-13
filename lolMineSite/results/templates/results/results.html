@@ -13,7 +13,7 @@
 	</ul>>
 	<ul>
 		{% for pri in priorities %}
-		<li>%{{pri*100}}</li>
+		<li>{{pri}}</li>
 		{% endfor %}
 	</ul>
 	<a href="{% url 'results:index' %}">Do it again</a>
