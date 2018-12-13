@@ -6,18 +6,16 @@
 <body>
 	<p>there will be dozens of result</p>
 	<ul>
-		<h2>Live Results</h2>
-		{% for line in result %}
-		<li>{{line}}</li>
+		<h2>change to be your homie</h2>
+		{% for player in players %}
+		<li>{{player}}</li>
 		{% endfor %}
-	</ul>
+	</ul>>
 	<ul>
-		<h2>collected Results</h2>
-		{% for lone in all_data %}
-		<li>{{lone}}</li>
+		{% for pri in priorities %}
+		<li>%{{pri*100}}</li>
 		{% endfor %}
 	</ul>
-	
 	<a href="{% url 'results:index' %}">Do it again</a>
 </body>
 </html>
