@@ -15,6 +15,8 @@ def index(request):
             query.save()
 
             resAhp,players = prepAhp(query)
+            if resAhp or players == 404:
+                return render(request, 'results/not_found.html',{})
             
             # result = main(player.username,player.main_role,player.secondary_role)
             print(resAhp)
@@ -40,8 +42,13 @@ def about(request):
 def how_to(request):
     return render(request, 'results/how_it_works.html', {})
 
+def not_found(request):
+    return render(request, 'results/not_found.html', {})
+
 def prepAhp(query):
     raw = main(query.username, query.main_role, query.secondary_role)
+    if raw == 404:
+        return 404,404
     players = raw['live']['Summoner Name']
     aggressions = raw['live']['Aggression Point']
     farms = raw['live']['Farming Point']

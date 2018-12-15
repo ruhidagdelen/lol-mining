@@ -43,9 +43,7 @@ def requestSummonerData(summonerName):
     requestCountCheck()
     response = requests.get(URL)
     if response.status_code == 404:
-        print("We couldn't find your Account try again")
-        print("due to 404")
-        main()
+        return(404)
     else:
         return response.json()
 
@@ -204,6 +202,8 @@ def main(summonerName,role,roleSec):
     # =============================================================================
     
     accountResponse = requestSummonerData(summonerName)
+    if accountResponse == 404:
+        return 404
     print(accountResponse)
     print("YOUR ACCOUNT ID: >"+str(accountResponse['accountId']))
     
