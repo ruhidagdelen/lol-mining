@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <section id="step0">
+	{% include 'results/includes/header.html' %}
+        </section>
+</head>
+<body>
+	<h1>HOW IT WORKS</h1>
+<div class="howToContainer">
+
+    <div class="howToStep">
+        <a href="#step1" style="text-decoration: none">
+        <div class="howToCard">
+        <h3>ENTER YOUR NAME</h3>
+            <img class="howToImg" src="{% static 'lolMineSite/images/howtoname.png' %}">
+        </div>
+            </a>
+    </div>
+
+    <div class="howToStep">
+        <a href="#step2" style="text-decoration: none">
+        <div class="howToCard">
+        <h3>CHOOSE ROLES</h3>
+            <img class="howToImg" src="{% static 'lolMineSite/images/howtorole.png' %}">
+        </div>
+            </a>
+    </div>
+    <div class="howToStep">
+<a href="#step3" style="text-decoration: none">
+        <div class="howToCard">
+        <h3>PRIORITIZE SKILLS</h3>
+            <img class="howToImg" src="{% static 'lolMineSite/images/howtoprior.png' %}">
+        </div>
+        </a>
+    </div>
+    <div class="howToStep">
+        <a href="#step4" style="text-decoration: none">
+        <div class="howToCard">
+            <h3>ADD FRIENDS</h3>
+        <img class="howToImg" src="{% static 'lolMineSite/images/howtoaddfriend.png' %}">
+        </div>
+        </a>
+
+    </div>
+    <div style="margin-top:90px">
+    <div style="display: table; margin: 0 auto;">
+            <a href="#step1" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div></div>
+
+    <section id="step1" style="margin-top:300px">
+        <h1>ENTER YOUR NAME</h1>
+        <img style="       display: block;
+        margin-left: auto;
+        margin-right: auto;" width="400px" src="{% static 'lolMineSite/images/howtostep1.png' %}">
+        <h3>Its not rocket science! Enter your<mark> summoner name</mark> so we can look up to your<mark> match history.</mark></h3>
+        <h3>This has a trick by the way. You can enter<mark> Faker</mark>  so you can get some recommendation <mark>on his level!</mark></h3>
+        <div style="display: table; margin: 0 auto;">
+            <a href="#step0" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step2" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step2" style="margin-top:300px">
+        <h1>CHOOSE ROLES</h1>
+        <img style="       display: block;
+        margin-left: auto;
+        margin-right: auto;" width="400px" src="{% static 'lolMineSite/images/howtostep2.png' %}">
+        <h3>Choose your teammate wisely.</h3>
+        <h3>Pick a primary role and secondary role for your teammate.</h3><h3>If there is not a player in<mark> primary role</mark>, we will look for <mark>secondary role.</mark></h3>
+                <div style="display: table; margin: 0 auto;">
+            <a href="#step1" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step3" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step3" style="margin-top:300px">
+        <h1>PRIORITIZE SKILLS</h1>
+        <img style="       display: block;
+        margin-left: auto;
+        margin-right: auto;" width="400px" src="{% static 'lolMineSite/images/howtostep3.png' %}">
+        <h3>Let us tailor the skills of <mark>perfect teammate </mark>for you.</h3>
+        <h3>Decide on which skill is more important for you. Compare between our <mark>4 main criteria.</mark></h3>
+                <div style="display: table; margin: 0 auto;">
+            <a href="#step2" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step4" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step4" style="margin-top:300px">
+        <h1>ADD FRIENDS</h1>
+        <img style="       display: block;
+        margin-left: auto;
+        margin-right: auto;" width="300px" src="{% static 'lolMineSite/images/howtostep4.png' %}">
+        <h3>Add the player from results!</h3>
+        <h3>You can choose the player you want to play with among results. You should add him/her from <mark>game client.</mark> </h3>
+    </section>
+                    <div style="display: table; margin: 0 auto;">
+            <a href="#step0" style="text-decoration: none"><img width="60px" src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            </div>
+     <a  style="text-decoration: none; margin-top:30px;" href="{% url 'results:index' %}"><button class="button" style='width:700px !important;'type="button">Find teammates</button></a>
+
+</div>
+</body>
+</html>
