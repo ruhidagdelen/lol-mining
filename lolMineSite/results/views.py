@@ -38,7 +38,7 @@ def about(request):
     return render(request, 'results/about.html', {})
 
 def how_to(request):
-    return render(request, 'results/how_to.html', {})
+    return render(request, 'results/how_it_works.html', {})
 
 def prepAhp(query):
     raw = main(query.username, query.main_role, query.secondary_role)
