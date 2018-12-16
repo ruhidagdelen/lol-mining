@@ -15,13 +15,17 @@ def index(request):
             query.save()
 
             resAhp,players = prepAhp(query)
-            if resAhp or players == 404:
+            if resAhp == 404:
                 return render(request, 'results/not_found.html',{})
             
             # result = main(player.username,player.main_role,player.secondary_role)
             print(resAhp)
             ahp_model = parse(resAhp)
-            priorities = ahp_model.get_priorities()
+            try:
+                priorities = ahp_model.get_priorities()
+            except AssertionError as e:
+                return render(request, 'results/not_found.html',{'error':e})
+            
             # last = result['live']
             # last = map(list, last.values)
             # all_data = result['collected']
