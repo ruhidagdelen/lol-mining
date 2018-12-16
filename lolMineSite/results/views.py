@@ -16,7 +16,8 @@ def index(request):
 
             resAhp,players = prepAhp(query)
             if resAhp == 404:
-                return render(request, 'results/not_found.html',{})
+                e = 'Player Not Found'
+                return render(request, 'results/not_found.html',{'error':e})
             
             # result = main(player.username,player.main_role,player.secondary_role)
             print(resAhp)
