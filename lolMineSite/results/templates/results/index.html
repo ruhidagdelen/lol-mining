@@ -1,383 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <section id="main1">
-    </section>
     {% load staticfiles %}
-	{% include 'results/includes/header.html' %}
+    {% include 'results/includes/header.html' %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("input[name=secondary_role][value='SOLO']").prop('disabled', true);
+            $("input[name=main_role][value='NONE']").prop('disabled', true);
+            // click listener for 1st and 2nd groups
+            $('input[name^=main_role]').click(function () {
+                // disable all first
+                $('input[name=secondary_role]').prop('disabled', false);
+                // enable currently selected radios
+                $('input[name^=main_role]:checked').each(function () {
+                    $('input[name=secondary_role][value=' + $(this).val() + ']').prop('disabled', true);
+                });
+            });
+            // click listener for 1st and 2nd groups
+            $('input[name^=secondary_role]').click(function () {
+                // disable all first
+                $('input[name=main_role]').prop('disabled', false);
+                // enable currently selected radios
+                $('input[name^=secondary_role]:checked').each(function () {
+                    $('input[name=main_role][value=' + $(this).val() + ']').prop('disabled', true);
+                });
+            });
+
+            $("#frmbutton").on("click", function () {
+                $('#firstform').hide();
+                $('#secondform').show();
+                $('html, body').animate({
+                    scrollTop: $("#secondform").offset().top
+                });
+            });
+            $("#frmbutton2").on("click", function () {
+                $('#secondform').hide();
+                $('#firstform').show();
+                $('html, body').animate({
+                    scrollTop: $("#firstform").offset().top
+                });
+            });
+
+        });
+
+
+    </script>
     <style>
-    input[type=range] {
-        -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-        width: 100%; /* Specific width is required for Firefox. */
-        background: transparent; /* Otherwise white in Chrome */
-    }
+        input[type=range] {
+            -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+            width: 100%; /* Specific width is required for Firefox. */
+            background: transparent; /* Otherwise white in Chrome */
+        }
 
-    input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-    }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+        }
 
-    input[type=range]:focus {
-        outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
-    }
+        input[type=range]:focus {
+            outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+        }
 
-    input[type=range]::-ms-track {
-        width: 100%;
-        cursor: pointer;
+        input[type=range]::-ms-track {
+            width: 100%;
+            cursor: pointer;
 
-        /* Hides the slider so custom styles can be added */
-        background: transparent;
-        border-color: transparent;
-        color: transparent;
-    }
+            /* Hides the slider so custom styles can be added */
+            background: transparent;
+            border-color: transparent;
+            color: transparent;
+        }
 
-    /* Special styling for WebKit/Blink */
-    input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        border: 1px solid #000000;
+        /* Special styling for WebKit/Blink */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 1px solid #000000;
 
-        height: 20px;
-        width: 20px;
-        border-radius: 100%;
-        background: white;
-        cursor: pointer;
-        margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    }
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            background: white;
+            cursor: pointer;
+            margin-top: -7px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+        }
 
-    /* All the same stuff for Firefox */
-    input[type=range]::-moz-range-thumb {
-        border: 1px solid #000000;
-        height: 20px;
-        width: 20px;
-        border-radius: 100%;
-        margin-top: -7px;
-        background: white;
-        cursor: pointer;
-    }
+        /* All the same stuff for Firefox */
+        input[type=range]::-moz-range-thumb {
+            border: 1px solid #000000;
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            margin-top: -7px;
+            background: white;
+            cursor: pointer;
+        }
 
-    /* All the same stuff for IE */
-    input[type=range]::-ms-thumb {
+        /* All the same stuff for IE */
+        input[type=range]::-ms-thumb {
 
-        border: 1px solid #000000;
-        height: 20px;
-        width: 20px;
-        border-radius: 100%;
-        margin-top: -7px;
-        background: white;
-        cursor: pointer;
-    }
+            border: 1px solid #000000;
+            height: 20px;
+            width: 20px;
+            border-radius: 100%;
+            margin-top: -7px;
+            background: white;
+            cursor: pointer;
+        }
 
-    input[type=range]::-webkit-slider-runnable-track {
-        width: 200px;
-        height: 6px;
-        cursor: pointer;
-        background: #FFC65D;
-        border-radius: 1.3px;
-        border: 0.2px solid #010101;
-    }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 200px;
+            height: 6px;
+            cursor: pointer;
+            background: #FFC65D;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
 
-    input[type=range]:focus::-webkit-slider-runnable-track {
-        background: #FFC65D;
-    }
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #FFC65D;
+        }
 
-    input[type=range]::-moz-range-track {
-        width: 200px;
-        height: 6px;
-        cursor: pointer;
-        background: #FFC65D;
-        border-radius: 1.3px;
-        border: 0.2px solid #010101;
-    }
+        input[type=range]::-moz-range-track {
+            width: 200px;
+            height: 6px;
+            cursor: pointer;
+            background: #FFC65D;
+            border-radius: 1.3px;
+            border: 0.2px solid #010101;
+        }
 
-    input[type=range]::-ms-track {
-        width: 200px;
-        height: 6px;
-        cursor: pointer;
-        background: transparent;
-        border-color: transparent;
-        border-width: 16px 0;
-        color: transparent;
-    }
+        input[type=range]::-ms-track {
+            width: 200px;
+            height: 6px;
+            cursor: pointer;
+            background: transparent;
+            border-color: transparent;
+            border-width: 16px 0;
+            color: transparent;
+        }
 
-    input[type=range]::-ms-fill-lower {
-        background: #FFC65D;
-        border: 0.2px solid #010101;
-        border-radius: 2.6px;
-    }
+        input[type=range]::-ms-fill-lower {
+            background: #FFC65D;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
 
-    input[type=range]:focus::-ms-fill-lower {
-        background: #FFC65D;
-    }
+        input[type=range]:focus::-ms-fill-lower {
+            background: #FFC65D;
+        }
 
-    input[type=range]::-ms-fill-upper {
-        background: #FFC65D;
-        border: 0.2px solid #010101;
-        border-radius: 2.6px;
-    }
+        input[type=range]::-ms-fill-upper {
+            background: #FFC65D;
+            border: 0.2px solid #010101;
+            border-radius: 2.6px;
+        }
 
-    input[type=range]:focus::-ms-fill-upper {
-        color: white;
-    }
+        input[type=range]:focus::-ms-fill-upper {
+            color: white;
+        }
 
-    .range {
-        display: flex;
-        flex-flow: row-reverse;
-        align-items: center;
-        justify-content: flex-end;
-        height: 50px;
-    }
+        .range {
+            display: flex;
+            flex-flow: row-reverse;
+            align-items: center;
+            justify-content: flex-end;
+            height: 50px;
+        }
 
-    .lblrange {
-        font-size: 200%;
-        text-align: center;
-        color: white;
-        margin: 0 30px;
-        font-family: Montserrat;
-        font-weight: 400;
-    }
+        .lblrange {
+            font-size: 200%;
+            text-align: center;
+            color: white;
+            margin: 0 30px;
+            font-family: Montserrat;
+            font-weight: 400;
+        }
 
-    input[type=text] {
-        background: transparent;
-        font-family: Rockwell;
-        font-weight: 400;
-        font-size: 36px;
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-        border: none;
-        border-bottom: 2px solid #FFC65D;
-        color: white;
-    }
+        input[type=text] {
+            background: transparent;
+            font-family: Rockwell;
+            font-weight: 400;
+            font-size: 36px;
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 2px solid #FFC65D;
+            color: white;
+        }
 
-    input[type=text]:focus {
-        font-family: Rockwell;
-        font-weight: 400;
-        font-size: 36px;
-        outline: none;
-        background: transparent;
-        border-bottom: 2px solid white;
-        color: #FFC65D;
-    }
+        input[type=text]:focus {
+            font-family: Rockwell;
+            font-weight: 400;
+            font-size: 36px;
+            outline: none;
+            background: transparent;
+            border-bottom: 2px solid white;
+            color: #FFC65D;
+        }
 
-    /* HIDE RADIO */
-    [type=radio] {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+        /* HIDE RADIO */
+        [type=radio] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-    /* IMAGE STYLES */
-    [type=radio] + img {
-        display: inline-block;
-        cursor: pointer;
-    }
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            display: inline-block;
+            cursor: pointer;
+        }
 
-    /* CHECKED STYLES */
-    [type=radio]:checked + img {
-        outline: 2px solid #FFC65D;
-    }
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 2px solid #FFC65D;
+        }
 
-    .roleoptions {
-        margin-left: auto;
-        margin-right: auto;
-        width: 60%;
-        display: flex;
-        justify-content: space-between;
-    }
+        .roleoptions {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    table {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        width: 96%;
-    }
+        table {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 96%;
+        }
 
-    td {
-        text-align: left;
-        width: 33% !important;
-        padding: 10px 0;
-    }
-    tr td:nth-child(1){
-        text-align: right;
-    }
+        td {
+            text-align: left;
+            width: 33% !important;
+            padding: 10px 0;
+        }
 
-    html {
-        margin: 1em;
-    }
+        tr td:nth-child(1) {
+            text-align: right;
+        }
 
-</style>
+
+    </style>
 </head>
 <body>
+<div class="header" id="homeheader">
+    <h1 class="head">FIND TEAMMATES</h1>
+</div>
 <form method="post">
-    <h1>FIND TEAMMATES</h1>
-    <img style="  display: block;
+    <div id="firstform">
+        <img style="  display: block;
   margin-left: 14.5%;" width="70%" src="{% static 'lolMineSite/images/onboardstep1.png' %}">
 
-    <!--<img style="  display: block;
+        <!--<img style="  display: block;
   margin-left: 14.5%;" width="70%" src="{% static 'lolMineSite/images/onboardstep3.png' %}">-->
-    {% csrf_token %}
-    <p style="width: 40%; margin: 0 auto; text-align: center; padding-top: 90px;">
-        <label class="lblrange" for="id_username">ENTER USERNAME</label>
-        <input type="text" name="username" maxlength="50" required="" id="id_username" style="text-align:center;"></p>
-    <p>
+        {% csrf_token %}
+        <p style="width: 40%; margin: 0 auto; text-align: center; padding-top: 90px;">
+            <label class="lblrange" for="id_username">ENTER USERNAME</label>
+            <input type="text" name="username" maxlength="50" required="" id="id_username" style="text-align:center;">
+        </p>
+        <p>
 
-    
+
         <div class="container">
 
-        <h2>CHOOSE PRIMARY ROLE</h2>
+            <h2>CHOOSE PRIMARY ROLE</h2>
 
-        <div class="roleoptions">
-            <label><input type="radio" name="main_role" value="SOLO" checked>
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
-            </label>
-            <label>
-                <input type="radio" name="main_role" value="NONE">
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
+            <div class="roleoptions">
+                <label><input type="radio" name="main_role" value="SOLO" checked>
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
+                </label>
+                <label>
+                    <input type="radio" name="main_role" value="NONE">
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
+                </label> <label>
+                <input type="radio" name="main_role" value="DUO">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
             </label> <label>
-            <input type="radio" name="main_role" value="DUO">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
-        </label> <label>
-            <input type="radio" name="main_role" value="DUO_CARRY">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
-        </label><label>
-            <input type="radio" name="main_role" value="DUO_SUPPORT">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
-        </label>
-        </div>
-    </div>
-            <div class="container">
-
-        <h2>CHOOSE SECONDARY ROLE</h2>
-
-        <div class="roleoptions">
-            <label><input type="radio" name="secondary_role" value="SOLO" checked>
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
+                <input type="radio" name="main_role" value="DUO_CARRY">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
+            </label><label>
+                <input type="radio" name="main_role" value="DUO_SUPPORT">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
             </label>
-            <label>
-                <input type="radio" name="secondary_role" value="NONE">
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
-            </label> <label>
-            <input type="radio" name="secondary_role" value="DUO">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
-        </label> <label>
-            <input type="radio" name="secondary_role" value="DUO_CARRY">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
-        </label><label>
-            <input type="radio" name="secondary_role" value="DUO_SUPPORT">
-            <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
-        </label>
+            </div>
         </div>
+        <div class="container">
+
+            <h2>CHOOSE SECONDARY ROLE</h2>
+
+            <div class="roleoptions">
+                <label><input type="radio" name="secondary_role" value="SOLO">
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
+                </label>
+                <label>
+                    <input type="radio" name="secondary_role" value="NONE" checked>
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
+                </label> <label>
+                <input type="radio" name="secondary_role" value="DUO">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
+            </label> <label>
+                <input type="radio" name="secondary_role" value="DUO_CARRY">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
+            </label><label>
+                <input type="radio" name="secondary_role" value="DUO_SUPPORT">
+                <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
+            </label>
+            </div>
+        </div>
+        <button class="button" id="frmbutton" style='width:700px !important; margin-top:60px; margin-bottom:60px;'
+                type="button">Prioritize Skills
+        </button>
     </div>
-
-<!--    <p><label for="id_main_role">Main role:</label>
-     <input type="text" name="main_role" maxlength="15" required="" id="id_main_role"></p>
-    <p><label for="id_secondary_role">Secondary role:</label>
-     <input type="text" name="secondary_role" maxlength="15" required="" id="id_secondary_role"></p> -->
-
-
-        <section id="main2" style="margin-top: 300px;">
-        <img style="  display: block;
+    <div id="secondform" style="display:none">
+        <section id="main2">
+            <img style="  display: block;
   margin-left: 14.5%;" width="70%" src="{% static 'lolMineSite/images/onboardstep2.png' %}">
 
-    <h2>PRIORITIZE SKILLS</h2>
-    <table align="center">
-        <tr>
-            <td><label class="lblrange">AGGRESSION</label></td>
+            <h2>PRIORITIZE SKILLS</h2>
+            <table align="center">
+                <tr>
+                    <td><label class="lblrange">AGGRESSION</label></td>
 
-            <td><input type="range" id="id_aggOverFar" name="volume" min="-9" max="9" step="1" oninput="agg1out.value = id_aggOverFar.value"></td>
-            <td><label class="lblrange">FARMING</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="agg1out">0</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><label class="lblrange">AGGRESSION</label></td>
+                    <td><input type="range" id="id_aggOverFar" name="volume" min="-9" max="9" step="1"
+                               oninput="agg1out.value = id_aggOverFar.value"></td>
+                    <td><label class="lblrange">FARMING</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="agg1out">0</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">AGGRESSION</label></td>
 
-            <td><input type="range" id="id_aggOverSur" name="volume" min="1" max="9" oninput="agg2out.value = id_aggOverSur.value"></td>
-            <td><label class="lblrange">SURVIVAL</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="agg2out">5</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><label class="lblrange">AGGRESSION</label></td>
+                    <td><input type="range" id="id_aggOverSur" name="volume" min="1" max="9"
+                               oninput="agg2out.value = id_aggOverSur.value"></td>
+                    <td><label class="lblrange">SURVIVAL</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="agg2out">5</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">AGGRESSION</label></td>
 
-            <td><input type="range" id="id_aggOverVis" name="volume" min="1" max="9"
-                       oninput="agg3out.value = id_aggOverVis.value"></td>
-            <td><label class="lblrange">VISION</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="agg3out">5</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><label class="lblrange">FARMING</label></td>
+                    <td><input type="range" id="id_aggOverVis" name="volume" min="1" max="9"
+                               oninput="agg3out.value = id_aggOverVis.value"></td>
+                    <td><label class="lblrange">VISION</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="agg3out">5</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">FARMING</label></td>
 
-            <td><input type="range" id="id_farOverSur" name="volume" min="1" max="9" oninput="farming1out.value = id_farOverSur.value"></td>
-            <td><label class="lblrange">SURVIVAL</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="farming1out">5</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><label class="lblrange">FARMING</label></td>
+                    <td><input type="range" id="id_farOverSur" name="volume" min="1" max="9"
+                               oninput="farming1out.value = id_farOverSur.value"></td>
+                    <td><label class="lblrange">SURVIVAL</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="farming1out">5</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">FARMING</label></td>
 
-            <td><input type="range" id="id_farOverVis" name="volume" min="1" max="9" oninput="farming2out.value = id_farOverVis.value"></td>
-            <td><label class="lblrange">SURVIVAL</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="farming2out">5</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><label class="lblrange">SURVIVAL</label></td>
+                    <td><input type="range" id="id_farOverVis" name="volume" min="1" max="9"
+                               oninput="farming2out.value = id_farOverVis.value"></td>
+                    <td><label class="lblrange">SURVIVAL</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="farming2out">5</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">SURVIVAL</label></td>
 
-            <td><input type="range" id="id_surOverVis" name="volume" min="1" max="9" oninput="sur1out.value = id_surOverVis.value"></td>
-            <td><label class="lblrange">VISION</label></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <h4>
-                    <output name="ageOutputName" id="sur1out">5</output>
-                </h4>
-            </td>
-            <td></td>
-        </tr>
-    </table>
-</section>
+                    <td><input type="range" id="id_surOverVis" name="volume" min="1" max="9"
+                               oninput="sur1out.value = id_surOverVis.value"></td>
+                    <td><label class="lblrange">VISION</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4>
+                            <output name="ageOutputName" id="sur1out">5</output>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+        <button class="button" id="frmbutton2" style='width:700px !important;' type="button">Go Back</button>
+        <input align="center" class='button' type="submit" value="Submit" style='width:700px !important;'>
+    </div>
 
     <!-- <input align="center" class='button' type="submit" value="Submit">
-</form> -->
+</form>
 
     <p><label for="id_aggOverFar">AggOverFar:</label>
      <input type="number" name="aggOverFar" step="any" id="id_aggOverFar"></p>
@@ -391,7 +441,7 @@
      <input type="number" name="farOverVis" step="any" id="id_farOverVis"></p>
     <p><label for="id_surOverVis">SurOverVis:</label>
     <input type="number" name="surOverVis" step="any" id="id_surOverVis"></p>
-    <input class='button' type="submit" value="Submit">
-  </form>
+    <input class='button' type="submit" value="Submit">-->
+</form>
 </body>
 </html>

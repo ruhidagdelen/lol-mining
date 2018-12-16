@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <section id="step0">
+    {% include 'results/includes/header.html' %}
+    </section>
+</head>
+<body>
+<div class="header" id="criteriaheader">
+    <h1 class="head">CRITERIA</h1>
+</div>
+<div class="howToContainer">
+    <a href="#step1" style="text-decoration: none">
+        <div class="howToStep">
+
+            <div class="howToCard">
+                <h3 style="margin-top: 70px;">AGGRESSION</h3>
+            </div>
+
+        </div>
+    </a>
+    <a href="#step2" style="text-decoration: none">
+        <div class="howToStep">
+
+            <div class="howToCard">
+                <h3 style="margin-top: 70px;">SURVIVAL</h3>
+            </div>
+
+        </div>
+    </a>
+    <a href="#step3" style="text-decoration: none">
+        <div class="howToStep">
+
+            <div class="howToCard">
+                <h3 style="margin-top: 70px;">FARMING</h3>
+            </div>
+
+        </div>
+    </a>
+    <a href="#step4" style="text-decoration: none">
+        <div class="howToStep">
+
+            <div class="howToCard">
+                <h3 style="margin-top: 70px;">VISION</h3>
+            </div>
+
+
+        </div>
+    </a>
+
+    <section id="step1" style="margin-top:300px">
+        <div class="header" id="criterian1">
+            <h1 class="head">AGGRESSION</h1>
+        </div>
+        <h3>
+            <mark>Aggression</mark>
+            is basically a calculation of
+            <mark>DPS</mark>
+            (Damage Per Second). We divide the total damage dealt to champions score to game duration.
+        </h3>
+        <h3>You might want to give priority to this skill when you want an
+            <mark>assassin</mark>
+            mid or jungle player.
+        </h3>
+        <div style="display: table; margin: 0 auto; padding-top:120px;">
+            <a href="#step0" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step2" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step2" style="margin-top:300px">
+        <div class="header" id="criterian2">
+            <h1 class="head">SURVIVAL</h1>
+        </div>
+        <h3>Survival is an indicator of
+            <mark>ability to not die</mark>
+            during game as long as possible. We divide longest time survived score to game duration.
+        </h3>
+        <h3>Usually
+            <mark>solo, tanky junglers and tanky supports</mark>
+            are good at surviving. If you want to play with one of these types,
+            <mark>survival</mark>
+            is the option for you.
+        </h3>
+        <div style="display: table; margin: 0 auto; padding-top:120px;">
+            <a href="#step1" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step3" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step3" style="margin-top:300px">
+        <div class="header" id="criterian3">
+            <h1 class="head">FARMING</h1>
+        </div>
+        <h3>Farming is actually refers to <mark>last-hit skills </mark>of your teammate. We divide total minions killed by game duration to get farming score.
+        </h3>
+        <h3>Most players demand an <mark>ad carry </mark>with high minions score in game.
+        </h3>
+        <div style="display: table; margin: 0 auto; padding-top:120px;">
+            <a href="#step2" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Uparrow.png' %}">
+            </a>
+            <a href="#step4" style="text-decoration: none"><img width="60px"
+                                                                src="{% static 'lolMineSite/images/Downarrow.png' %}">
+            </a></div>
+    </section>
+    <section id="step4" style="margin-top:300px">
+        <div class="header" id="criterian4">
+            <h1 class="head">VISION</h1>
+        </div>
+        <h3>Vision is very important for macro strategies. Most of the time warding is done by<mark> the support</mark>. In high elo, <mark>everyone</mark> is responsible for vision.</h3>
+        <h3>We calculate vision score by simply dividing respective score to game duration again. Riot has a more complex algorithm for calculating vision score.
+        </h3>
+    </section>
+    <div style="display: table; margin: 0 auto; padding-top:60px;">
+        <a href="#step0" style="text-decoration: none"><img width="60px"
+                                                            src="{% static 'lolMineSite/images/Uparrow.png' %}">
+        </a>
+    </div>
+
+</div>
+</body>
+</html>
