@@ -78,3 +78,10 @@ y=os_data_y['win']
 logit_model=sm.Logit(y,X)
 result=logit_model.fit()
 print(result.summary2())
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+
+print("constant value")
+print(logreg.intercept_)

@@ -1,7 +1,7 @@
 ################################
 # lol-mining project
 # date: 12.11.2018
-# author: R U hi?
+# author: ruhiddin
 # version: 2.1
 ################################
 import requests

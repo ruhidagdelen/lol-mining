@@ -17,7 +17,7 @@ def index(request):
             resAhp,players = prepAhp(query)
             if resAhp == 404:
                 e = 'Player Not Found'
-                return render(request, 'results/not_found.html',{'error':e})
+                return render(request, 'results/not_found.html',{'notfound':e})
             
             # result = main(player.username,player.main_role,player.secondary_role)
             print(resAhp)
@@ -25,7 +25,7 @@ def index(request):
             try:
                 priorities = ahp_model.get_priorities()
             except AssertionError as e:
-                return render(request, 'results/not_found.html',{'error':e})
+                return render(request, 'results/not_found.html',{'consError':e})
             
             # last = result['live']
             # last = map(list, last.values)
@@ -52,6 +52,30 @@ def not_found(request):
 
 def criteria(request):
     return render(request, 'results/criteria.html', {})
+
+def regression(query):
+    regConst = {
+    'assists': 0.2254,
+    'visionScore': -0.0044,
+    'timeCCingOthers': -0.0144,
+    'deaths': -0.4347,
+    'kills': -0.2414,
+    'totalDamageDealtToChampions': -0.00001
+    }
+    raw = main(query.username, query.main_role, query.secondary_role)
+    if raw == 404:
+        return 404
+    # regAssist = raw['live']['regAssist']
+    # regVisionScore = raw['live']['regVisionScore']
+    # regTimeCCingOthers = raw['live']['regTimeCCingOthers']
+    # regDeaths = raw['live']['regDeaths']
+    # regKills = raw['live']['regKills']
+    # regTotalDamageDealtToChampions = raw['live']['regTotalDamageDealtToChampions']
+
+    for row in raw['live']:
+        pass
+
+
 
 def prepAhp(query):
     raw = main(query.username, query.main_role, query.secondary_role)

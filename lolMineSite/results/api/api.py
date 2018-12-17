@@ -72,6 +72,12 @@ def staticsCalculator(account,role):
     living = 0
     lastHit = 0
     vision = 0
+    regAssist = 0
+    regVisionScore = 0
+    regTimeCCingOthers = 0
+    regDeaths = 0
+    regKills = 0
+    regTotalDamageDealtToChampions = 0
     summonerName = ""
 
     matchlistResponse = requestMatchList(str(account),seasonID,endIndex)
@@ -90,6 +96,13 @@ def staticsCalculator(account,role):
                 living += matchDetailResponse['participants'][i]['stats']['longestTimeSpentLiving']
                 lastHit += matchDetailResponse['participants'][i]['stats']['totalMinionsKilled']
                 vision += matchDetailResponse['participants'][i]['stats']['visionScore']
+
+                regAssist += float(matchDetailResponse['participants'][i]['stats']['assists']) 
+                regVisionScore += float(matchDetailResponse['participants'][i]['stats']['visionScore'])
+                regTimeCCingOthers += float(matchDetailResponse['participants'][i]['stats']['timeCCingOthers'])
+                regDeaths += float(matchDetailResponse['participants'][i]['stats']['deaths'])
+                regKills += float(matchDetailResponse['participants'][i]['stats']['kills'])
+                regTotalDamageDealtToChampions += float(matchDetailResponse['participants'][i]['stats']['totalDamageDealtToChampions'])
 
                 totalDamageDealtToChampions += float(
                     matchDetailResponse['participants'][i]['stats']['totalDamageDealtToChampions']) / gameDuration
@@ -121,6 +134,14 @@ def staticsCalculator(account,role):
     print("\n Total creeps killed: "+ str(_lastHit))
     _vision = vision/len(matchIDList)
     print("\n Vision: "+ str(_vision))
+
+    _regAssist = regAssist / len(matchIDList)
+    _regVisionScore = regVisionScore / len(matchIDList)
+    _regTimeCCingOthers = regTimeCCingOthers / len(matchIDList)
+    _regDeaths = regDeaths / len(matchIDList)
+    _regKills = regKills / len(matchIDList)
+    _regTotalDamageDealtToChampions = regTotalDamageDealtToChampions / len(matchIDList)
+
     return {"Summoner Name": summonerName,
             "Summoner Role": role,
             "Aggression Point": agression,
@@ -130,7 +151,13 @@ def staticsCalculator(account,role):
             "Average Damage": _damage,
             "Longest Alive": _living,
             "Last Hit":_lastHit,
-            "Vision": _vision}
+            "Vision": _vision,
+            "regAssist": _regAssist,
+            "regVisionScore": _regVisionScore,
+            "regTimeCCingOthers": _regTimeCCingOthers,
+            "regDeaths": _regDeaths,
+            "regKills": _regKills,
+            "regTotalDamageDealtToChampions": _regTotalDamageDealtToChampions}
 
 
 def getMatchIDs(matchlistResponse):
