@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 	{% include 'results/includes/header.html' %}
+    <title>LolMate - Results</title>
 </head>
 <body>
-	<p>there will be dozens of result</p>
 	<ul>
-		<h2>chance to be your homie</h2>
+		<h1>RESULTS</h1>
 		{% for player in players %}
-		<li>{{player}}</li>
+		<li><h4>{{player}}</h4></li>
 		{% endfor %}
 	</ul>
 	<ul>
 		{% for pri in priorities %}
-		<li>{{pri}}</li>
+		<li><h4>{{pri}}</h4></li>
 		{% endfor %}
 	</ul>
 	<a href="{% url 'results:index' %}">Do it again</a>
