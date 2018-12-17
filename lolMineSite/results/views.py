@@ -75,7 +75,8 @@ def regression(query):
     for row in raw['live']:
         pass
 
-
+def welcome(request):
+    return render(request, 'results/welcome.html', {})
 
 def prepAhp(query):
     raw = main(query.username, query.main_role, query.secondary_role)

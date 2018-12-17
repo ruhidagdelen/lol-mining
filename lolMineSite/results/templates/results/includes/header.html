@@ -5,163 +5,227 @@
 <link rel="shortcut icon" type="image/png" href="{% static 'lolMineSite/images/favicon.ico' %}"/>
 <style>
     html {
-  overflow-y: scroll;
+        overflow-y: scroll;
         scroll-behavior: smooth;
-}
-body{
-    font-family: Rockwell, Montserrat, sans-serif;
-    width:100%;
-    margin:0;
-    padding:0;
-    background-color: #111;
-}
-    ul {
-  overflow: hidden;
-    list-style:none;
-        display:inline-block;
-        width:100%;
-    margin:0 auto;
-    padding:0;
-    text-align:center;
-
-}
-li{
-    display:inline;
-margin: 30px 30px;}
-li a {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-display:inline-block;
-}
-
-/* Change the color of links on hover */
-li a:hover {
-  color: #FFC65D;
-}
-h1, h2, h3, h4{
-    text-align:center;
-    margin-top: 60px;
-    font-family: Rockwell;
-    font-weight: 500;
-    color: white;
-    font-size: 64px;
-}
-h2{
-    font-family: Montserrat;
-    font-weight:400;
-    font-size:32px;
-}
-h3{
-    font-family: Montserrat;
-    font-weight:400;
-    margin-top: 20px;
-    font-size:24px;
-}
-h4{
-    font-family: Montserrat;
-    font-weight:400;
-    margin-top: -20px;
-    font-size:16px;
-}
-    .howToContainer{
-        display:inline;
     }
-    .howToStep{
-        display:inline-block;
-        min-width:250px;
-        width:20%;
-        height:180px;
-        margin-left:2%;
-        margin-right:2%;
-        margin-top:20px;
+
+    body {
+        font-family: Rockwell, Montserrat, sans-serif;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #111;
+    }
+
+    ul {
+        overflow: hidden;
+        list-style: none;
+        display: inline-block;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+
+    }
+
+    li {
+        display: inline;
+        margin: 30px 30px;
+    }
+
+    li a {
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: inline-block;
+    }
+
+    /* Change the color of links on hover */
+    li a:hover {
+        color: #FFC65D;
+    }
+
+    h1, h2, h3, h4 {
+        text-align: center;
+        margin-top: 60px;
+        font-family: Rockwell;
+        font-weight: 500;
+        color: white;
+        font-size: 64px;
+    }
+
+    h2 {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 32px;
+    }
+
+    h3 {
+        font-family: Montserrat;
+        font-weight: 400;
+        margin-top: 20px;
+        font-size: 24px;
+    }
+
+    h4 {
+        font-family: Montserrat;
+        font-weight: 400;
+        margin-top: -20px;
+        font-size: 16px;
+    }
+
+    .howToContainer {
+        display: inline;
+    }
+
+    .howToStep {
+        display: inline-block;
+        min-width: 250px;
+        width: 20%;
+        height: 180px;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-top: 20px;
         border: #FFC65D 3px solid;
         transition-duration: 0.4s;
     }
-    .howToStep:hover{
+
+    .howToStep:hover {
         transform: translateY(-8px);
     }
-    .howToCard{
+
+    .howToCard {
         margin-left: auto;
         margin-right: auto;
-        margin-top:10px;
+        margin-top: 10px;
 
     }
-    .howToImg{
-       display: block;
-        max-width:80%;
-        max-height:80px;
+
+    .howToImg {
+        display: block;
+        max-width: 80%;
+        max-height: 80px;
         margin-left: auto;
         margin-right: auto;
-        margin-top:30px;
+        margin-top: 30px;
     }
 
     mark {
-        color:#FFC65D;
+        color: #FFC65D;
         background: none;
     }
 
+    .button {
+        display: block;
+        padding: 15px 200px;
+        margin: 0 auto;
+        margin-top: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        font-family: Montserrat;
+        font-weight: 400;
+        color: #FFC65D;
+        background-color: transparent;
+        border: #FFC65D 2px solid;
+    }
 
-        .button {
-            display: block;
-            padding: 15px 200px;
-            margin: 0 auto;
-            margin-top: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            font-family: Montserrat;
-            font-weight: 400;
-            color: #FFC65D;
-            background-color: transparent;
-            border: #FFC65D 2px solid;
-        }
+    .button:hover {
+        border: white 2px solid;
+        color: white;
+        transform: translateY(2px);
 
-        .button:hover {
-            border: white 2px solid;
-            color: white;
-            transform: translateY(2px);
+    }
 
-
-        }
-    .header{
+    .header {
         width: 100%;
-                height: 300px;
-        margin:0;
-        padding:0;
+        height: 300px;
+        margin: 0;
+        padding: 0;
 
-            }
-    #homeheader{background: url({% static 'lolMineSite/images/Home.png' %}) no-repeat;}
-    #aboutheader{background: url({% static 'lolMineSite/images/AboutUs.png' %})  no-repeat;}
-    #howitworksheader{background: url({% static 'lolMineSite/images/HowItWorks.png' %})  no-repeat;}
-    #aboutheader{background: url({% static 'lolMineSite/images/AboutUs.png' %})  no-repeat;}
-    #criteriaheader{background: url({% static 'lolMineSite/images/Criteria.png' %}) no-repeat;}
-    #criterian1{background: url({% static 'lolMineSite/images/Aggression.png' %})  no-repeat;}
-    #criterian2{background: url({% static 'lolMineSite/images/Survival.png' %})  no-repeat;}
-    #criterian3{background: url({% static 'lolMineSite/images/Farming.png' %})  no-repeat;}
-    #criterian4{background: url({% static 'lolMineSite/images/Vision.png' %})  no-repeat;}
+    }
 
-    .head{
+    #homeheader {
+        background: url({% static 'lolMineSite/images/Home.png' %}) no-repeat;
+    }
+
+    #aboutheader {
+        background: url({% static 'lolMineSite/images/AboutUs.png' %}) no-repeat;
+    }
+
+    #howitworksheader {
+        background: url({% static 'lolMineSite/images/HowItWorks.png' %}) no-repeat;
+    }
+
+    #aboutheader {
+        background: url({% static 'lolMineSite/images/AboutUs.png' %}) no-repeat;
+    }
+
+    #criteriaheader {
+        background: url({% static 'lolMineSite/images/Criteria.png' %}) no-repeat;
+    }
+
+    #criterian1 {
+        background: url({% static 'lolMineSite/images/Aggression.png' %}) no-repeat;
+    }
+
+    #criterian2 {
+        background: url({% static 'lolMineSite/images/Survival.png' %}) no-repeat;
+    }
+
+    #criterian3 {
+        background: url({% static 'lolMineSite/images/Farming.png' %}) no-repeat;
+    }
+
+    #criterian4 {
+        background: url({% static 'lolMineSite/images/Vision.png' %}) no-repeat;
+    }
+
+    #welcome1 {
+        background: url({% static 'lolMineSite/images/WelcomeFind.png' %}) no-repeat;
+    }
+
+    #welcome2 {
+        background: url({% static 'lolMineSite/images/WelcomeAbout.png' %}) no-repeat;
+    }
+
+    #welcome3 {
+        background: url({% static 'lolMineSite/images/WelcomeHow.png' %}) no-repeat;
+    }
+
+    #welcome4 {
+        background: url({% static 'lolMineSite/images/WelcomeCrit.png' %}) no-repeat;
+    }
+    #notfound {
+        background: url({% static 'lolMineSite/images/NotFound.png' %}) no-repeat;
+    }
+
+    .head {
         padding-top: 120px;
     }
 </style>
-<div>
-	<ul>
-		<li>
-			<a href="{% url 'results:index' %}">Home</a>
-		</li>
-		<li>
-			<a href="{% url 'results:about' %}">About</a>
-		</li>
-		<li>
-			<a href="{% url 'results:how_it_works' %}">How It Works</a>
+
+<div id="navbar">
+
+    <ul>
+        <li id="logo">
+            <a href="{% url 'results:welcome' %}"><img height="20px" style="position:absolute; left:10px; top:15px; " src="{% static 'lolMineSite/images/Logo.png' %}"></a>
+        </li>
+        <li>
+            <a href="{% url 'results:index' %}">Find a Teammate</a>
+        </li>
+        <li>
+            <a href="{% url 'results:about' %}">About</a>
+        </li>
+        <li>
+            <a href="{% url 'results:how_it_works' %}">How It Works</a>
 
         <li>
-			<a href="{% url 'results:criteria' %}">Criteria</a>
-		</li>
-	</ul>
+            <a href="{% url 'results:criteria' %}">Criteria</a>
+        </li>
+    </ul>
 </div>

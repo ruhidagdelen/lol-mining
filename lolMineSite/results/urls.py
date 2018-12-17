@@ -8,7 +8,8 @@ from . import views
 app_name = 'results'
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^find/$', views.index, name='index'),
+    url(r'^$', views.welcome, name='welcome'),
     url(r'^about/$', views.about, name='about'),
     url(r'^how_it_works/$', views.how_to, name="how_it_works"),
     # url(r'^results/$', views.results, name="results"),

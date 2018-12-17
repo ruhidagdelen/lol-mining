@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'results/includes/header.html' %}
+    {% load staticfiles %}
+    <style>
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+section div {
+  height: 333px;
+    margin:0px !important;
+    padding:0px !important;
+      background-position: center;
+  background-size: cover;
+    text-align: center;
+vertical-align: middle;
+line-height: 333px;
+}
+#a1:hover #welcome1,
+#a1:focus #welcome1{
+
+  transform: scale(1.01);
+    transition: all .5s;
+}
+#a2:hover #welcome2,
+#a2:focus #welcome2{
+
+  transform: scale(1.01);
+    transition: all .5s;
+}
+#a3:hover #welcome3,
+#a3:focus #welcome3{
+
+  transform: scale(1.01);
+    transition: all .5s;
+}
+#a4:hover #welcome4,
+#a4:focus #welcome4{
+    transform: scale(1.01);
+    transition: all .5s;
+}
+
+
+        #navbar{display:none;}
+        a {
+            height: 333px;
+            font-weight:normal;
+            text-decoration:none;
+        }
+        h2{
+            margin-top:0px;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+<section>
+  <a id="a1" href="{% url 'results:index' %}"><div id="welcome1"><h2>Find a Teammate</h2></div></a>
+    <a id="a2" href="{% url 'results:about' %}"><div id="welcome2"><h2>About Us</h2></div></a>
+    <a id="a3" href="{% url 'results:how_it_works' %}"><div id="welcome3"><h2>How It Works</h2></div></a>
+    <a id="a4" href="{% url 'results:criteria' %}"><div id="welcome4"><h2>Criteria</h2></div></a>
+</section>
+</div>
+</body>
+</html>
