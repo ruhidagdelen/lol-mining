@@ -1,1 +1,31 @@
-not found {{error}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'results/includes/header.html' %}
+    {% load staticfiles %}
+    <style>
+        div{
+            text-align: center;
+        }
+        h1 {
+            font-size: 96px;
+        }
+    </style>
+<body>
+<div id="notfound">
+    {% if notfound %}
+        <h1>USER NOT FOUND</h1>
+    {% endif %}
+    {% if consError %}
+        <h1>PRIORITIES INCONSISTENT</h1>
+    {% endif %}
+    <a style="text-decoration: none; margin-top:30px;" href="{% url 'results:index' %}">
+        <button class="button" style='width:700px !important;' type="button">Try Again</button>
+    </a>
+</div>
+</body>
+</html>
+
+
+

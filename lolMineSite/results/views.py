@@ -53,6 +53,9 @@ def not_found(request):
 def criteria(request):
     return render(request, 'results/criteria.html', {})
 
+def welcome(request):
+    return render(request, 'results/welcome.html', {})
+
 def prepAhp(query):
     raw = main(query.username, query.main_role, query.secondary_role)
     if raw == 404:
