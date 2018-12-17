@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>LolMate - Home</title>
     {% load staticfiles %}
     {% include 'results/includes/header.html' %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
+        function updateTextInput1(val) {
+            if (val > 0) {
+                document.getElementById('range1').innerHTML = "<mark>Aggression</mark> is <mark>" + val + "</mark> times more important than <mark>Farming</mark>";
+            }
+            else {
+                document.getElementById('range1').innerHTML = "<mark>Farming</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Aggression</mark>";
+            }
+        }
+
+        function updateTextInput2(val) {
+            if (val > 0) {
+                document.getElementById('range2').innerHTML = "<mark>Aggression</mark> is <mark>" + val + "</mark> times more important than <mark>Survival</mark>";
+            }
+            else {
+                document.getElementById('range2').innerHTML = "<mark>Survival</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Aggression</mark>";
+            }
+        }
+
+        function updateTextInput3(val) {
+            if (val > 0) {
+                document.getElementById('range3').innerHTML = "<mark>Aggression</mark> is <mark>" + val + "</mark> times more important than <mark>Vision</mark>";
+            }
+            else {
+                document.getElementById('range3').innerHTML = "<mark>Vision</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Aggression</mark>";
+            }
+        }
+
+        function updateTextInput4(val) {
+            if (val > 0) {
+                document.getElementById('range4').innerHTML = "<mark>Farming</mark> is <mark>" + val + "</mark> times more important than <mark>Survival</mark>";
+            }
+            else {
+                document.getElementById('range4').innerHTML = "<mark>Survival</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Farming</mark>";
+            }
+        }
+
+        function updateTextInput5(val) {
+            if (val > 0) {
+                document.getElementById('range5').innerHTML = "<mark>Farming</mark> is <mark>" + val + "</mark> times more important than <mark>Vision</mark>";
+            }
+            else {
+                document.getElementById('range5').innerHTML = "<mark>Vision</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Farming</mark>";
+            }
+        }
+
+        function updateTextInput6(val) {
+            if (val > 0) {
+                document.getElementById('range6').innerHTML = "<mark>Survival</mark> is <mark>" + val + "</mark> times more important than <mark>Vision</mark>";
+            }
+            else {
+                document.getElementById('range6').innerHTML = "<mark>Vision</mark> is <mark>" + (val * -1) + "</mark> times more important than <mark>Survival</mark>";
+            }
+        }
+
         $(document).ready(function () {
 
             $("input[name=secondary_role][value='SOLO']").prop('disabled', true);
@@ -245,6 +300,14 @@
             text-align: right;
         }
 
+        .roleoptions label {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .roleoptions h4 {
+            margin-bottom: -15px;
+        }
 
     </style>
 </head>
@@ -272,22 +335,31 @@
             <h2>CHOOSE PRIMARY ROLE</h2>
 
             <div class="roleoptions">
-                <label><input type="radio" name="main_role" value="SOLO" checked>
+                <label>
+                    <h4>SOLO</h4>
+                    <input type="radio" name="main_role" value="SOLO" checked>
                     <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
                 </label>
                 <label>
+                    <h4>JUNGLE</h4>
                     <input type="radio" name="main_role" value="NONE">
                     <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
-                </label> <label>
-                <input type="radio" name="main_role" value="DUO">
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
-            </label> <label>
-                <input type="radio" name="main_role" value="DUO_CARRY">
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
-            </label><label>
-                <input type="radio" name="main_role" value="DUO_SUPPORT">
-                <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
-            </label>
+                </label>
+                <label>
+                    <h4>MIDDLE</h4>
+                    <input type="radio" name="main_role" value="DUO">
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
+                </label>
+                <label>
+                    <h4>AD CARRY</h4>
+                    <input type="radio" name="main_role" value="DUO_CARRY">
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
+                </label>
+                <label>
+                    <h4>SUPPORT</h4>
+                    <input type="radio" name="main_role" value="DUO_SUPPORT">
+                    <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
+                </label>
             </div>
         </div>
         <div class="container">
@@ -295,19 +367,25 @@
             <h2>CHOOSE SECONDARY ROLE</h2>
 
             <div class="roleoptions">
-                <label><input type="radio" name="secondary_role" value="SOLO">
+                <label>
+                    <h4>SOLO</h4>
+                    <input type="radio" name="secondary_role" value="SOLO">
                     <img class="howToImg" src="{% static 'lolMineSite/images/lane1.png' %}">
                 </label>
                 <label>
+                    <h4>JUNGLE</h4>
                     <input type="radio" name="secondary_role" value="NONE" checked>
                     <img class="howToImg" src="{% static 'lolMineSite/images/lane2.png' %}">
                 </label> <label>
+                <h4>MIDDLE</h4>
                 <input type="radio" name="secondary_role" value="DUO">
                 <img class="howToImg" src="{% static 'lolMineSite/images/lane3.png' %}">
             </label> <label>
+                <h4>AD CARRY</h4>
                 <input type="radio" name="secondary_role" value="DUO_CARRY">
                 <img class="howToImg" src="{% static 'lolMineSite/images/lane4.png' %}">
             </label><label>
+                <h4>SUPPORT</h4>
                 <input type="radio" name="secondary_role" value="DUO_SUPPORT">
                 <img class="howToImg" src="{% static 'lolMineSite/images/lane5.png' %}">
             </label>
@@ -325,97 +403,121 @@
             <h2>PRIORITIZE SKILLS</h2>
             <table align="center">
                 <tr>
-                    <td><label class="lblrange">AGGRESSION</label></td>
-
-                    <td><input type="range" id="id_aggOverFar" name="volume" min="-9" max="9" step="1"
-                               oninput="agg1out.value = id_aggOverFar.value"></td>
                     <td><label class="lblrange">FARMING</label></td>
+
+                    <td><input type="range" id="id_aggOverFar" name="aggOverFar" min="-9" max="9" step="2" value="1"
+                               onchange="updateTextInput1(this.value);"></td>
+                    <td><label class="lblrange">AGGRESSION</label></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <h4>
-                            <output name="ageOutputName" id="agg1out">0</output>
+                        <h4 id="range1">
+                            <mark>Aggression</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Farming</mark>
                         </h4>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><label class="lblrange">AGGRESSION</label></td>
-
-                    <td><input type="range" id="id_aggOverSur" name="volume" min="1" max="9"
-                               oninput="agg2out.value = id_aggOverSur.value"></td>
                     <td><label class="lblrange">SURVIVAL</label></td>
+
+                    <td><input type="range" id="id_aggOverSur" name="aggOverSur" min="-9" max="9" step="2"
+                               onchange="updateTextInput2(this.value);"></td>
+                    <td><label class="lblrange">AGGRESSION</label></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <h4>
-                            <output name="ageOutputName" id="agg2out">5</output>
+                        <h4 id="range2">
+                            <mark>Aggression</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Survival</mark>
                         </h4>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><label class="lblrange">AGGRESSION</label></td>
-
-                    <td><input type="range" id="id_aggOverVis" name="volume" min="1" max="9"
-                               oninput="agg3out.value = id_aggOverVis.value"></td>
                     <td><label class="lblrange">VISION</label></td>
+
+                    <td><input type="range" id="id_aggOverVis" name="aggOverVis" min="-9" max="9" step="2"
+                               onchange="updateTextInput3(this.value);"></td>
+                    <td><label class="lblrange">AGGRESSION</label></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <h4>
-                            <output name="ageOutputName" id="agg3out">5</output>
+                        <h4 id="range3">
+                            <mark>Aggression</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Vision</mark>
                         </h4>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
+                    <td><label class="lblrange">SURVIVAL</label></td>
+
+                    <td><input type="range" id="id_farOverSur" name="farOverSur" min="-9" max="9" step="2"
+                               onchange="updateTextInput4(this.value);"></td>
                     <td><label class="lblrange">FARMING</label></td>
-
-                    <td><input type="range" id="id_farOverSur" name="volume" min="1" max="9"
-                               oninput="farming1out.value = id_farOverSur.value"></td>
-                    <td><label class="lblrange">SURVIVAL</label></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <h4>
-                            <output name="ageOutputName" id="farming1out">5</output>
+                        <h4 id="range4">
+                            <mark>Farming</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Survival</mark>
                         </h4>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><label class="lblrange">FARMING</label></td>
-
-                    <td><input type="range" id="id_farOverVis" name="volume" min="1" max="9"
-                               oninput="farming2out.value = id_farOverVis.value"></td>
-                    <td><label class="lblrange">SURVIVAL</label></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <h4>
-                            <output name="ageOutputName" id="farming2out">5</output>
-                        </h4>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td><label class="lblrange">SURVIVAL</label></td>
-
-                    <td><input type="range" id="id_surOverVis" name="volume" min="1" max="9"
-                               oninput="sur1out.value = id_surOverVis.value"></td>
                     <td><label class="lblrange">VISION</label></td>
+
+                    <td><input type="range" id="id_farOverVis" name="farOverVis" min="-9" max="9" step="2"
+                               onchange="updateTextInput5(this.value);"></td>
+                    <td><label class="lblrange">FARMING</label></td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <h4>
-                            <output name="ageOutputName" id="sur1out">5</output>
+                        <h4 id="range5">
+                            <mark>Farming</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Vision</mark>
+                        </h4>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><label class="lblrange">VISION</label></td>
+
+                    <td><input type="range" id="id_surOverVis" name="surOverVis" min="-9" max="9" step="2"
+                               onchange="updateTextInput6(this.value);"></td>
+                    <td><label class="lblrange">SURVIVAL</label></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <h4 id="range6">
+                            <mark>Survival</mark>
+                            is
+                            <mark>1</mark>
+                            times more important than
+                            <mark>Vision</mark>
                         </h4>
                     </td>
                     <td></td>
@@ -425,23 +527,6 @@
         <button class="button" id="frmbutton2" style='width:700px !important;' type="button">Go Back</button>
         <input align="center" class='button' type="submit" value="Submit" style='width:700px !important;'>
     </div>
-
-    <!-- <input align="center" class='button' type="submit" value="Submit">
-</form>
-
-    <p><label for="id_aggOverFar">AggOverFar:</label>
-     <input type="number" name="aggOverFar" step="any" id="id_aggOverFar"></p>
-    <p><label for="id_aggOverSur">AggOverSur:</label>
-     <input type="number" name="aggOverSur" step="any" id="id_aggOverSur"></p>
-    <p><label for="id_aggOverVis">AggOverVis:</label>
-     <input type="number" name="aggOverVis" step="any" id="id_aggOverVis"></p>
-    <p><label for="id_farOverSur">FarOverSur:</label>
-     <input type="number" name="farOverSur" step="any" id="id_farOverSur"></p>
-    <p><label for="id_farOverVis">FarOverVis:</label>
-     <input type="number" name="farOverVis" step="any" id="id_farOverVis"></p>
-    <p><label for="id_surOverVis">SurOverVis:</label>
-    <input type="number" name="surOverVis" step="any" id="id_surOverVis"></p>
-    <input class='button' type="submit" value="Submit">-->
 </form>
 </body>
 </html>
