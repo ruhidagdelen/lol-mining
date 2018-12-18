@@ -227,8 +227,10 @@ def main(summonerName,role,roleSec):
 
     checkRoles(role,roleSec)
     # =============================================================================
-    
-    accountResponse = requestSummonerData(summonerName)
+    try:
+        accountResponse = requestSummonerData(summonerName)
+    except:
+        return 404
     if accountResponse == 404:
         return 404
     print(accountResponse)

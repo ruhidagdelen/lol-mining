@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import pandas as pd
+import numpy as np
 from .forms import PlayerForm
 from .api.api import *
 import json
 from django.http import JsonResponse
 from pyahp import parse
+import math
+import operator
 
 def index(request):
     if request.method == "POST":
@@ -59,38 +62,44 @@ def regression(query):
     'visionScore': -0.0044,
     'timeCCingOthers': -0.0144,
     'deaths': -0.4347,
-    'kills': -0.2414,
+    'kills': 0.2414,
     'totalDamageDealtToChampions': -0.00001
     }
+    constant = -0.02271289
     raw = main(query.username, query.main_role, query.secondary_role)
+    # raw = pd.read_excel('results/api/lolLive.xlsx')
+    # raw = {'live':raw}
     if raw == 404:
-        return 404
-    # regAssist = raw['live']['regAssist']
-    # regVisionScore = raw['live']['regVisionScore']
-    # regTimeCCingOthers = raw['live']['regTimeCCingOthers']
-    # regDeaths = raw['live']['regDeaths']
-    # regKills = raw['live']['regKills']
-    # regTotalDamageDealtToChampions = raw['live']['regTotalDamageDealtToChampions']
-    afterCalc = []
-    for row in raw['live'].iterrows():
-        aft = (float(row['regAssist'])*float(regConst['assists'])) + (float(row['regVisionScore'])*float(regConst['visionScore']))+(float(row['regTimeCCingOthers'])*flaot(regConst['timeCCingOthers']))+(float(row['regDeaths'])*float(regConst['deaths']))+(float(row['regKills'])*float(regConst['kills']))+(float(row['regTotalDamageDealtToChampions'])*float(regConst['totalDamageDealtToChampions']))
-        plyr = row['Summoner Name']
-        afterCalc.append({plyr:aft})
-    print(afterCalc)
-    return raw
+        return False,False
+
+    df = pd.DataFrame(raw['live'])
+    Wps = []
+    for key,row in df.iterrows():
+        x = constant + row['regAssist']*regConst['assists']+row['regVisionScore']*regConst['visionScore']+row['regTimeCCingOthers']*regConst['timeCCingOthers']+row['regDeaths']*regConst['deaths']+row['regKills']*regConst['kills']+row['regTotalDamageDealtToChampions']*regConst['totalDamageDealtToChampions']
+        wp = math.exp(x)/(1+math.exp(x))
+        print(wp)
+        Wps.append(wp)
+        
+    WP = pd.DataFrame({'wp':Wps})
+    df = df.join(WP)
+    print(df)
+    df = df.sort_values(by=['wp'])
+    print('afterSort')
+    print(df)
+    return df,True
 
 def welcome(request):
     return render(request, 'results/welcome.html', {})
 
 def prepAhp(query):
-    raw = regression(query)
-    if raw == 404:
+    raw,chck = regression(query)
+    if not chck:
         return 404,404
-    players = raw['live']['Summoner Name']
-    aggressions = raw['live']['Aggression Point']
-    farms = raw['live']['Farming Point']
-    survives = raw['live']['Survival Point']
-    visions = raw['live']['Vision Point']
+    players = raw['Summoner Name']
+    aggressions = raw['Aggression Point']
+    farms = raw['Farming Point']
+    survives = raw['Survival Point']
+    visions = raw['Vision Point']
     aggMatrix = [
         [1, aggressions[0]/aggressions[1], aggressions[0]/aggressions[2], aggressions[0]/aggressions[3]],
         [aggressions[1]/aggressions[0], 1, aggressions[1]/aggressions[2], aggressions[1]/aggressions[3]],
