@@ -71,15 +71,19 @@ def regression(query):
     # regDeaths = raw['live']['regDeaths']
     # regKills = raw['live']['regKills']
     # regTotalDamageDealtToChampions = raw['live']['regTotalDamageDealtToChampions']
-
-    for row in raw['live']:
-        pass
+    afterCalc = []
+    for row in raw['live'].iterrows():
+        aft = (float(row['regAssist'])*float(regConst['assists'])) + (float(row['regVisionScore'])*float(regConst['visionScore']))+(float(row['regTimeCCingOthers'])*flaot(regConst['timeCCingOthers']))+(float(row['regDeaths'])*float(regConst['deaths']))+(float(row['regKills'])*float(regConst['kills']))+(float(row['regTotalDamageDealtToChampions'])*float(regConst['totalDamageDealtToChampions']))
+        plyr = row['Summoner Name']
+        afterCalc.append({plyr:aft})
+    print(afterCalc)
+    return raw
 
 def welcome(request):
     return render(request, 'results/welcome.html', {})
 
 def prepAhp(query):
-    raw = main(query.username, query.main_role, query.secondary_role)
+    raw = regression(query)
     if raw == 404:
         return 404,404
     players = raw['live']['Summoner Name']
