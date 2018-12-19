@@ -29,17 +29,19 @@ def index(request):
                 priorities = ahp_model.get_priorities()
             except AssertionError as e:
                 return render(request, 'results/not_found.html',{'consError':e})
+            prios = pd.DataFrame({'prioritie':priorities})
+            print(prios)
+            players = players.join(prios)
+            print(players)
+            players = players.sort_values(by=['prioritie'],ascending=False)
+            print(players)
             
-            # last = result['live']
-            # last = map(list, last.values)
-            # all_data = result['collected']
-            # all_data = map(list, all_data.values)
-            # # all_data = all_data.values.to_list()
-            # return render(request, 'results/results.html',{
-            # 	'result':last,
-            # 	'all_data':all_data,
-            # 	})
-            return render(request, 'results/results.html',{'players':players,'priorities':priorities})
+            return render(request, 'results/results.html',{'players':players['player'],
+                'aggressions':players['aggression'],
+                'farms':players['farm'],
+                'survives':players['survive'],
+                'visions':players['vision'],
+                'priorities':players['prioritie']})
     else:
         form = PlayerForm()
     return render(request, 'results/index.html', {'form':form})
@@ -66,9 +68,9 @@ def regression(query):
     'totalDamageDealtToChampions': -0.00001
     }
     constant = -0.02271289
-    raw = main(query.username, query.main_role, query.secondary_role)
-    # raw = pd.read_excel('results/api/lolLive.xlsx')
-    # raw = {'live':raw}
+    # raw = main(query.username, query.main_role, query.secondary_role)
+    raw = pd.read_excel('results/api/lolLive.xlsx')
+    raw = {'live':raw}
     if raw == 404:
         return False,False
 
@@ -95,6 +97,7 @@ def prepAhp(query):
     raw,chck = regression(query)
     if not chck:
         return 404,404
+    raw = raw.sort_index()
     players = raw['Summoner Name']
     aggressions = raw['Aggression Point']
     farms = raw['Farming Point']
@@ -146,4 +149,6 @@ def prepAhp(query):
             "alternatives:visio": visionMatrix
         }
     }
-    return data,players[:4]
+    df = pd.DataFrame({'player':players,'aggression':aggressions,'farm':farms,'survive':survives,'vision':visions})
+    df = df.sort_index()
+    return data,df.head(4)

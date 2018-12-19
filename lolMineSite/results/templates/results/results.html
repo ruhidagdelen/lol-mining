@@ -12,8 +12,33 @@
 		{% endfor %}
 	</ul>
 	<ul>
-		{% for pri in priorities %}
-		<li><h4>{{pri}}</h4></li>
+		<h1>AHP points</h1>
+		{% for prioritie in priorities %}
+		<li><h4>{{prioritie}}</h4></li>
+		{% endfor %}
+	</ul>
+	<ul>
+		<h1>Aggression Points</h1>
+		{% for aggression in aggressions %}
+		<li><h4>{{aggression}}</h4></li>
+		{% endfor %}
+	</ul>
+	<ul>
+		<h1>Farm Points</h1>
+		{% for farm in farms %}
+		<li><h4>{{farm}}</h4></li>
+		{% endfor %}
+	</ul>
+	<ul>
+		<h1>Survive Points</h1>
+		{% for survive in survives %}
+		<li><h4>{{survive}}</h4></li>
+		{% endfor %}
+	</ul>
+	<ul>
+		<h1>Vision Points</h1>
+		{% for vision in visions %}
+		<li><h4>{{vision}}</h4></li>
 		{% endfor %}
 	</ul>
 	<a href="{% url 'results:index' %}">Do it again</a>
