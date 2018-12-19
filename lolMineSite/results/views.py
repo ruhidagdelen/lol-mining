@@ -68,9 +68,9 @@ def regression(query):
     'totalDamageDealtToChampions': -0.00001
     }
     constant = -0.02271289
-    # raw = main(query.username, query.main_role, query.secondary_role)
-    raw = pd.read_excel('results/api/lolLive.xlsx')
-    raw = {'live':raw}
+    raw = main(query.username, query.main_role, query.secondary_role)
+    # raw = pd.read_excel('results/api/lolLive.xlsx')
+    # raw = {'live':raw}
     if raw == 404:
         return False,False
 
