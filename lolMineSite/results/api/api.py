@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from requests import exceptions
 
-riotAPI = "RGAPI-a171adc1-2676-4419-8464-0e77329509af"
+riotAPI = "RGAPI-6250c2a9-00e0-4199-96ff-aceb375b42b2"
 seasonID = "11"
 endIndex = "5"
 winnerEndIndex = "5"
@@ -20,7 +20,7 @@ REQUEST_FLAG = 0
 
 def requestCountCheck():
     global REQUEST_FLAG
-    if REQUEST_FLAG >= 100:
+    if REQUEST_FLAG >= 120:
         print('Please wait! Program will be avaliable..')
         time.sleep(35)
         print('in 60 sec')

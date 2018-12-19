@@ -34,6 +34,7 @@ def index(request):
             players = players.join(prios)
             print(players)
             players = players.sort_values(by=['prioritie'],ascending=False)
+            players = players.round(4)
             print(players)
             
             return render(request, 'results/results.html',{'players':players['player'],
